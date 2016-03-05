@@ -4,9 +4,10 @@ do ($ = jQuery) ->
     if distance == 0
       nextLink = @find("[rel=next]")
       scrollHeight = @[0].scrollHeight
-      $.getScript(nextLink.attr("href")).done =>
-        diff = @[0].scrollHeight - scrollHeight
-        @scrollTop(diff)
+      if nextLink.size() isnt 0
+        $.getScript(nextLink.attr("href")).done =>
+          diff = @[0].scrollHeight - scrollHeight
+          @scrollTop(diff)
 
   methods = {
     init: ->
